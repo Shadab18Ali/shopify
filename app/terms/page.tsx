@@ -45,7 +45,7 @@ export default function Terms() {
 
       <h2 className="h3">Payments</h2>
       <p>
-        Payments are processed by Razorpay. We never see or store your card or UPI details. Prices are shown on
+        Payments are processed by Razorpay or PayPal, whichever you choose at checkout. We never see or store your card, UPI or PayPal login details. Prices are shown on
         each section page and include no hidden fees from us. Your bank or card issuer may add its own charges.
       </p>
 

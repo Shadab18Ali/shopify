@@ -4,6 +4,7 @@ import { getSectionBySlug, formatPrice } from "@/lib/db";
 import BuyButton from "./BuyButton";
 import CustomizeForm from "./CustomizeForm";
 import { siteUrl } from "@/lib/site";
+import { paypalAvailable } from "@/lib/paypal";
 
 export const dynamic = "force-dynamic";
 
@@ -76,7 +77,7 @@ export default async function SectionPage({ params }: { params: { slug: string }
           <h1 className="h2">{s.title}</h1>
           {s.summary && <p className="lede">{s.summary}</p>}
           <p className="price">{formatPrice(s.price, s.currency)}</p>
-          <BuyButton slug={s.slug} />
+          <BuyButton slug={s.slug} currency={s.currency} paypalClientId={paypalAvailable(s.currency) ? process.env.PAYPAL_CLIENT_ID : undefined} />
           <div className="desc">{s.description}</div>
           <details className="howto">
             <summary>How to install</summary>

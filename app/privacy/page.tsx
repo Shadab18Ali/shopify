@@ -18,12 +18,12 @@ export default function Privacy() {
 
       <h2 className="h3">What we collect</h2>
       <ul>
-        <li><b>Purchases:</b> your email address, the section you bought, the amount, and Razorpay order and payment IDs.</li>
+        <li><b>Purchases:</b> your email address, the section you bought, the amount, and the payment provider's order and payment IDs (Razorpay or PayPal).</li>
         <li><b>Customization requests:</b> your name, email, store URL, budget and the details you write.</li>
         <li><b>Find my purchases:</b> the email address you type in, used only to look up your orders.</li>
       </ul>
       <p>
-        We do not see or store your card, UPI or bank details. They go directly to Razorpay. We do not use
+        We do not see or store your card, UPI or bank details. They go directly to Razorpay or PayPal. We do not use
         advertising trackers.
       </p>
 
@@ -38,7 +38,7 @@ export default function Privacy() {
       <h2 className="h3">Who we share it with</h2>
       <p>We only use these service providers to run the site:</p>
       <ul>
-        <li>Razorpay, for payments.</li>
+        <li>Razorpay and PayPal, for payments.</li>
         <li>Vercel, for hosting and file storage.</li>
         <li>Neon, for our database.</li>
         <li>Resend, for sending email.</li>
@@ -54,7 +54,7 @@ export default function Privacy() {
       <h2 className="h3">Cookies</h2>
       <p>
         The public site sets no cookies. A single sign-in cookie is used on the private admin area only.
-        Razorpay&apos;s payment window may set its own cookies while you pay.
+        Razorpay and PayPal may set their own cookies while you pay.
       </p>
 
       <h2 className="h3">Your choices</h2>

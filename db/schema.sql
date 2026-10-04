@@ -39,3 +39,9 @@ CREATE TABLE IF NOT EXISTS custom_requests (
   status      TEXT NOT NULL DEFAULT 'new',   -- new | quoted | in_progress | done
   created_at  TIMESTAMPTZ NOT NULL DEFAULT now()
 );
+
+-- PayPal support: run npm run db:setup again, it is safe on an existing database
+ALTER TABLE orders ADD COLUMN IF NOT EXISTS provider TEXT NOT NULL DEFAULT 'razorpay';
+ALTER TABLE orders ADD COLUMN IF NOT EXISTS paypal_order_id TEXT UNIQUE;
+ALTER TABLE orders ADD COLUMN IF NOT EXISTS paypal_capture_id TEXT;
+ALTER TABLE orders ALTER COLUMN razorpay_order_id DROP NOT NULL;

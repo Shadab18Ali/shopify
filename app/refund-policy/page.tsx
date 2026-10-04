@@ -36,7 +36,7 @@ export default function RefundPolicy() {
       <h2 className="h3">Failed or duplicate payments</h2>
       <p>
         If money was taken but you did not get your download link, use{" "}
-        <a href="/find-my-purchases">Find my purchases</a> or email us with your payment ID. If you were charged
+        <a href="/find-my-purchases">Find my purchases</a> or email us with your payment or PayPal transaction ID. If you were charged
         twice for the same section, we will refund the duplicate payment.
       </p>
 
@@ -48,14 +48,14 @@ export default function RefundPolicy() {
 
       <h2 className="h3">How refunds are paid</h2>
       <p>
-        Approved refunds go back to the original payment method through Razorpay. Your bank usually takes 5 to 7
+        Approved refunds go back to the original payment method through Razorpay or PayPal. Your bank usually takes 5 to 7
         working days to show it.
       </p>
 
       <h2 className="h3">How to ask</h2>
       <p>
         Email <a href="mailto:shadab18ali@gmail.com">shadab18ali@gmail.com</a> with the email address you used to buy
-        and your payment ID.
+        and your payment or PayPal transaction ID.
       </p>
     </main>
   );

@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl()),
   title: "Liquid Shelf | Ready-made Shopify sections",
   description: "Drop-in Shopify 2.0 sections for $2 each, with optional customization for your store.",
 };

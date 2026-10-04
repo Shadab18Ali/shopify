@@ -33,6 +33,7 @@ npm run dev
 - Start with Razorpay **test** keys (`rzp_test_...`) and test cards.
 - To charge in USD, enable **International Payments** in the Razorpay dashboard (needs website + policy pages approved).
   Until then, set prices in INR (e.g. 169.00 INR) from the admin upload form.
+- Add a webhook in Razorpay (Settings, Webhooks) pointing to `<SITE_URL>/api/razorpay-webhook` with the `payment.captured` event and set `RAZORPAY_WEBHOOK_SECRET` to the same secret. It marks orders paid even if the buyer closes the browser early.
 - Razorpay requires Terms, Privacy, Refund and Contact pages on your site before going live.
 
 ## What to upload per section

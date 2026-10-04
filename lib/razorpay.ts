@@ -30,3 +30,11 @@ export function verifyPaymentSignature(orderId: string, paymentId: string, signa
   const expected = createHmac("sha256", keys().secret).update(`${orderId}|${paymentId}`).digest("hex");
   return safeEqual(expected, signature);
 }
+
+/** Webhooks are signed with HMAC-SHA256 of the raw request body using RAZORPAY_WEBHOOK_SECRET. */
+export function verifyWebhookSignature(rawBody: string, signature: string) {
+  const secret = process.env.RAZORPAY_WEBHOOK_SECRET;
+  if (!secret) throw new Error("RAZORPAY_WEBHOOK_SECRET is not set");
+  const expected = createHmac("sha256", secret).update(rawBody).digest("hex");
+  return safeEqual(expected, signature);
+}

@@ -3,20 +3,66 @@ import type { Metadata } from "next";
 import { getSectionBySlug, formatPrice } from "@/lib/db";
 import BuyButton from "./BuyButton";
 import CustomizeForm from "./CustomizeForm";
+import { siteUrl } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const s = await getSectionBySlug(params.slug).catch(() => null);
-  return s ? { title: `${s.title} | Liquid Shelf`, description: s.summary || undefined } : {};
+  if (!s) return {};
+  const title = `${s.title} | Liquid Shelf`;
+  const description = s.summary || undefined;
+  const url = `${siteUrl()}/sections/${s.slug}`;
+  return {
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      type: "website",
+      siteName: "Liquid Shelf",
+      title,
+      description,
+      url,
+      ...(s.preview_url ? { images: [{ url: s.preview_url, alt: `${s.title} preview` }] } : {}),
+    },
+    twitter: {
+      card: s.preview_url ? "summary_large_image" : "summary",
+      title,
+      description,
+      ...(s.preview_url ? { images: [s.preview_url] } : {}),
+    },
+  };
 }
 
 export default async function SectionPage({ params }: { params: { slug: string } }) {
   const s = await getSectionBySlug(params.slug);
   if (!s) notFound();
 
+  const url = `${siteUrl()}/sections/${s.slug}`;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: s.title,
+    description: s.summary || s.description.slice(0, 300) || s.title,
+    category: s.category,
+    url,
+    ...(s.preview_url ? { image: [s.preview_url] } : {}),
+    brand: { "@type": "Brand", name: "Liquid Shelf" },
+    offers: {
+      "@type": "Offer",
+      url,
+      price: (s.price / 100).toFixed(2),
+      priceCurrency: s.currency,
+      availability: "https://schema.org/InStock",
+    },
+  };
+
   return (
     <main className="wrap detail">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
+      />
       <a href="/#sections" className="link back">All sections</a>
       <div className="detail-grid">
         <div>

@@ -132,3 +132,15 @@ th { font-weight: 600; color: var(--muted); font-size: 13px; }
   .custom { padding: 28px 20px; gap: 28px; }
   .cform, .upload { grid-template-columns: 1fr; }
 }
+
+/* policy + contact pages, footer links */
+.foot-links { display: flex; gap: 18px; flex-wrap: wrap; }
+.foot-links a { text-decoration: none; }
+.foot-links a:hover { color: var(--ink); text-decoration: underline; }
+.prose h2.h3 { margin-top: 32px; }
+.prose ul { padding-left: 22px; }
+.prose li { margin-bottom: 6px; }
+.prose a { color: var(--accent); }
+.contact { display: grid; grid-template-columns: max-content 1fr; gap: 8px 24px; margin: 0 0 28px; }
+.contact dt { font-weight: 600; }
+.contact dd { margin: 0; }

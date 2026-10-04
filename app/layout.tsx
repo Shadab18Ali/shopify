@@ -28,6 +28,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <footer className="foot wrap">
           <p>Built and supported by Shadab Ali, Shopify developer in Delhi.</p>
+          <nav className="foot-links" aria-label="Footer">
+            <a href="/terms">Terms</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/refund-policy">Refunds</a>
+            <a href="/contact">Contact</a>
+          </nav>
           <p><a href="mailto:shadab18ali@gmail.com">shadab18ali@gmail.com</a></p>
         </footer>
       </body>

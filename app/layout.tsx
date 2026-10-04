@@ -32,6 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <a href="/terms">Terms</a>
             <a href="/privacy">Privacy</a>
             <a href="/refund-policy">Refunds</a>
+            <a href="/find-my-purchases">Find my purchases</a>
             <a href="/contact">Contact</a>
           </nav>
           <p><a href="mailto:shadab18ali@gmail.com">shadab18ali@gmail.com</a></p>
